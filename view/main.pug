@@ -1,0 +1,25 @@
+.container-fluid
+  .row
+    .col-lg-6.part1
+      img.img1(src="icon/5272.svg")
+      .hero-text.mx-auto
+        h1  A user friendly  note management application
+    .col-lg-6.part2
+      h1 Create your account and start using NOTE IT
+      form#form-sign.form.mx-auto
+        .form-group
+          label(for="Username" id="msg1") &nbsp 
+          input#name.form-control(type="text" placeholder="Username" required)
+        .form-group
+          label(for="email" id="msg2") &nbsp 
+          input#email.form-control(type="email" placeholder="Email" required)
+        .form-group
+          label(for="Password" id="msg3" ) &nbsp 
+          input#password.form-control(type="password" minlength="8" placeholder="Password" required)
+        .form-group
+          label(for="Confirm Password" id="msg4") &nbsp 
+          input#confirmPassword.form-control(type="password" minlength="8" placeholder="Confirm Password" required)
+        button.btn.btn-primary(type="submit" style="margin-top: 20px; " id="sign_in") Sign in
+        p
+          | Already have an account ? 
+          a(href="/login") Log in

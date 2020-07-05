@@ -1,0 +1,25 @@
+nav#top.navbar.navbar-expand-sm
+    .navbar-brand NOTE IT
+    if(!user)
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#collapsibleNavbar")
+            span.material-icons.ico0
+                | menu
+        #collapsibleNavbar.collapse.navbar-collapse
+            ul.navbar-nav.ml-auto
+                li.nav-item(style="margin-right: 60px;")
+                    a.nav-link.link1(style="color:#fff;" href="/login")
+                        | Log in
+                        span.material-icons.ico1
+                            | login
+    else
+         button.navbar-toggler(type="button" data-toggle="collapse" data-target="#collapsibleNavbar")
+            span.material-icons.ico0
+                | menu
+         #collapsibleNavbar.collapse.navbar-collapse
+            ul.navbar-nav.ml-auto
+                li.nav-item(style="margin-right: 60px;")
+                    a.nav-link.link1(style="color:#fff;" href="/logout")
+                        span.material-icons.ico-out
+                            | arrow_back    
+                        | Log out
+                        

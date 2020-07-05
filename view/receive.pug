@@ -1,0 +1,61 @@
+extends base2
+
+block content
+    .container-fluid.sent
+        a.btn(style="border: 1px solid rgb(180, 180, 180); margin-top: 10px;" href="/")
+            span.material-icons(style="vertical-align: middle; margin-top: -5px;")
+                | keyboard_backspace
+        h1 Received Notes
+        .sent_notes.mx-auto
+            if(received_note.length)
+                each note in received_note
+                    if(note.note)
+                        .note2
+                            h2 #{note.note.title}
+                            button.btn.btn2(data-toggle="modal" data-target=`#view-${note._id}`)
+                                span.material-icons-outlined.ico3
+                                    | amp_stories
+                                |  View
+                            button.btn.btn4(data-toggle="modal" data-target=`#delete-${note._id}`)
+                                span.material-icons.ico5
+                                    | delete_forever
+                                |  Delete
+                            h3 received from #{note.from.name}
+                            .modal(id=`view-${note._id}`)
+                                .modal-dialog
+                                    .modal-content
+                                        // Modal body
+                                        .modal-body
+                                            .mx-auto(style="width: 15rem;")
+                                                h2(style="padding: 5px; display: block;") #{note.note.title}
+                                                div(style="height:15rem;  width:15rem; padding: 5px; margin-top:5px; border:1px solid #ecf0f1;")
+                                                    p(style="white-space: pre-wrap") #{note.note.text}
+                                        // Modal footer
+                                        .modal-footer
+                                            button.btn.mx-auto.btn-danger.cls(type="button" data-dismiss="modal") Close
+                            .modal(id=`delete-${note._id}`)
+                                .modal-dialog
+                                    .modal-content
+                                        // Modal body
+                                        .modal-body
+                                            .mx-auto(style="width: 15rem;")
+                                                p Do you really want to delete?
+                                        // Modal footer
+                                        .modal-footer
+                                            button.receiv_del.btn.mx-auto.btn-danger.cls(type="button"  data-share = `${note._id}`) Yes
+                                            button.btn.mx-auto.btn-primary.cls(type="button" data-dismiss="modal") NO
+                    if(note.delete_by)
+                        .delete_note
+                            h4 This note was deleted
+                            button.btn.btn4.receiv_del(type="button"  data-share = `${note._id}`)
+                                span.material-icons.ico5
+                                    | delete_forever
+                                |  Remove
+                            h3 received from #{note.delete_by}
+       
+            
+            else 
+                h6
+                    span.material-icons.empt
+                        | content_paste
+                    |  Empty

@@ -1,0 +1,97 @@
+.container-fluid(style="padding: 0;")
+    .account
+        a(href="/account" style="color: #5E5E5E;")
+            img(src=`/user_pic/${user.photo}`)
+            div #{user.name.split(" ")[0]}
+.container-fluid(style="text-align: center;")
+    button.btn.btn1(data-toggle="modal" data-target="#myModal")
+        span.material-icons-outlined.ico1
+            | note_add
+        |  Create Note
+    #myModal.modal
+        .modal-dialog
+            .modal-content
+                // Modal body
+                .modal-body
+                    
+                    .mx-auto(style="width: 15rem;")
+                        form.create_form
+                            input#input1(type="text" placeholder="Title" style="padding: 5px; display: block; " required)
+                            textarea#txtarea1(placeholder="Note..." style="height:15rem;  width:15rem; padding: 5px; margin-top:5px;  resize:none;" required )
+                            button#save.btn.mx-auto.btn-primary(type="submit") Save
+                // Modal footer
+                .modal-footer
+                    
+                    button.btn.mx-auto.btn-danger.cls(type="button" data-dismiss="modal") Close
+.container-fluid.section1.my-4
+    .row
+        .col-lg-6.my-4
+            h1
+                span.material-icons.ico2
+                    | save_alt
+                |  Saved notes
+            .save_note
+                each note,i in notes
+                    .note
+                        h2 #{note.title}
+                        button.btn.btn2(data-toggle="modal" data-target=`#view-${note._id}`)
+                            span.material-icons-outlined.ico3
+                                | amp_stories
+                            |  View
+                        button.btn.btn3(data-toggle="modal" data-target=`#update-${note._id}`)
+                            span.material-icons.ico4
+                                | update
+                            |  Update
+                        .btn-grp
+                            a.btn.btn5(href=`/sharenote/${note.title}/${note.id}`)
+                                | Share 
+                                span.material-icons.ico6
+                                    | arrow_right_alt
+                            button.btn.btn4( data-toggle="modal" data-target=`#delete-${note._id}`)
+                                span.material-icons.ico5
+                                    | delete_forever
+                                |  Delete
+                        .modal(id=`view-${note._id}`)
+                            .modal-dialog
+                                .modal-content
+                                    // Modal body
+                                    .modal-body
+                                        .mx-auto(style="width: 15rem;")
+                                            h3(style="padding: 5px; display: block;") #{note.title}
+                                            div(style="height:15rem; overflow-x:auto; width:15rem; padding: 5px; margin-top:5px; border:1px solid #ecf0f1;" class="note_view")
+                                                p(style="white-space: pre-wrap") #{note.text}
+                                    // Modal footer
+                                    .modal-footer
+                                        button.btn.mx-auto.btn-danger.cls(type="button" data-dismiss="modal") Close
+                        .modal(id=`update-${note._id}`)
+                            .modal-dialog
+                                .modal-content
+                                    .modal-body
+                                        .mx-auto(style="width: 15rem;")
+                                            form.update_form( data-note=`${note._id}` style="text-align:center;")
+                                            
+                                                input(type="text" placeholder="Title" style="padding: 5px; display: block;" id=`update_inp-${note._id}` data-note=`${note._id}` data-title = `${note.title}` class="update_inp" required)
+                                                textarea(placeholder="Note..." class="note_upd" style="height:15rem;  width:15rem; padding: 5px; margin-top:5px;" data-note=`${note._id}` id=`update_txt-${note._id}` data-text=`${note.text}` class="update_txt" required)
+                                                button.btn.mx-auto.btn-primary(type="submit" id=`upd_btn-${note._id}`) Update
+                                    .modal-footer
+                                        
+                                        button.btn.mx-auto.btn-danger(type="button" data-dismiss="modal") back
+                        .modal(id=`delete-${note._id}`)
+                            .modal-dialog
+                                .modal-content
+                                    .modal-body
+                                        .mx-auto(style="width: 15rem;")
+                                            p Do you really want to delete note "#{note.title}"?
+                                            
+                                    .modal-footer
+                                        button.btn.mx-auto.btn-danger(type="button" data-dismiss="modal" class=`delete` data-note=`${note._id}`) Yes
+                                        button.btn.mx-auto.btn-primary(type="button" data-dismiss="modal") No               
+        .col-lg-6.my-4
+            h1
+                span.material-icons.ico2
+                    | share
+                | Shared notes
+            .share_note
+                a.btn.btn_sent.mx-auto(href="/sent_notes") Sent Notes
+                a.btn.btn_rec.mx-auto(href="/receive_notes") Received Notes 
+                img.img2(src="./icon/3249752.svg")

@@ -1,0 +1,18 @@
+extends base2
+
+
+block content
+    .container-fluid.box1
+      a.btn(style="border: 1px solid rgb(180, 180, 180); margin-top: 10px;" href="/")
+        span.material-icons(style="vertical-align: middle; margin-top: -5px;")
+            | keyboard_backspace  
+      h5
+        span.material-icons-outlined.share1
+          | screen_share
+        |  Share note "#{name}"
+      form#search_form.mx-auto(style="text-align: center;")
+        .form-group
+          input#user.form-control(type="text" placeholder="Search user" required)
+        button.btn.btn-primary.my-4(type="submit" data-note=`${note_id}`  id='search_btn')
+          | Search
+      .container.search_res.mx-auto

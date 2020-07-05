@@ -1,0 +1,64 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous")
+    script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous")
+    link(href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet")
+    link(rel="stylesheet" href="./style/style.css")
+  body
+    nav#top.navbar.navbar-expand-sm
+      .navbar-brand NOTE IT
+    .container-fluid
+      a.btn(style="border: 1px solid rgb(180, 180, 180); margin-top: 10px;" href="/")
+            span.material-icons(style="vertical-align: middle; margin-top: -5px;")
+                | keyboard_backspace
+      .row
+        .col-lg-6.pic-part.mx-auto
+          h1
+            span.material-icons.acc
+              | account_box
+            |  Your Account
+          img.user-profile(src=`/user_pic/${user.photo}`)
+          input#photo.photo(type="file" name="photo" accept="image/*")
+          label.label-pic(for="photo") Choose profile photo
+      .row
+        .col-lg-6.info.mx-auto
+          form#form_user.form
+            .form-group
+              label(for='user-name') Username
+              input.form-control.usr_name(type="text" value=`${user.name}`  id="user-name" required)
+            .form-group
+              label(for='user-mail' style='margin-top:15px;') Email
+              input.form-control.usr_email(type="email" value=`${user.email}` id="user-mail" required)
+            button.btn.btn-primary(type="submit" style="margin-top: 30px; " class='save_setting') Save settings
+      .row
+        
+        .col-lg-6.pass.mx-auto
+          h1
+            span.material-icons.paswrd
+              | enhanced_encryption
+            | Change Password
+          form#form_password.form
+            .form-group
+              label(for="curr_pass" id='pass_cur' ) &nbsp 
+              input.form-control(type="password" minlength="8" placeholder="Current Password" id='curr_pass' required)
+            .form-group
+              label(for="new_pass" ) &nbsp
+              input.form-control(type="password" minlength="8" placeholder="New Password" id='new_pass' required)
+            .form-group
+              label(for="conf_new_pass" id='pass_conf' ) &nbsp
+              input.form-control(type="password" minlength="8" placeholder="Confirm new password" id='conf_new_pass' required)
+            button.btn.btn-primary(type="submit" style="margin-top: 30px;" id='chng_pass') Update
+    .container-fluid.footer
+      p
+        | NOTE IT
+        br
+        |         Developer - Ritik Pandey
+
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(src='/js/bundle.js') 
