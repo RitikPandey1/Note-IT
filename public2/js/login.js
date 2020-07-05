@@ -22,7 +22,7 @@ export const login = async (email,password)=>{
 
     }catch(err){
        
- if(err.response){
+ if(err.response.data){
     console.log(err.response.data);  
     show_alert(err.response.data.error,'login');
     remove_alert();
