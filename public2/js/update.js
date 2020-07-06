@@ -10,7 +10,7 @@ try{
          text
      }  
    });
-  console.log(res.data);
+
   if(res.data.status==="Success") location.reload(true);
 }catch(err){
     if(err.response) console.log(err.response.data);

@@ -23,7 +23,7 @@ html
             span.material-icons.acc
               | account_box
             |  Your Account
-          img.user-profile(src=`/user_pic/${user.photo}`)
+          img.user-profile(src= source)
           input#photo.photo(type="file" name="photo" accept="image/*")
           label.label-pic(for="photo") Choose profile photo
       .row

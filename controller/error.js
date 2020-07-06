@@ -15,7 +15,7 @@ module.exports = (err,req,res,next)=>{
 
 if(process.env.NODE_ENV==='development'){
     let error = {...err};
-    console.log(error);
+    console.log(err);
 
     cust_mongo_err(error);
 
@@ -26,14 +26,17 @@ if(process.env.NODE_ENV==='development'){
     err
     });  
 }
+
+
 if(process.env.NODE_ENV==='production'){
    let error = {...err};
    console.log(err);
+   
    error =  cust_mongo_err(error);
-console.log(error);
-   if(error.statusCode===500) {
+
+   if(error.statusCode=='500') {
      return res.send('Somthing went wrong ,Try again later');
-}
+    }
    
     res.status(error.statusCode).json({
     status:error.status,

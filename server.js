@@ -16,7 +16,7 @@ mongoose.connect(process.env.DB,{
 .then(()=> console.log('DataBase connected!') )
 .catch(err=>console.log(err));
 
-setInterval(delete_note,3600000);
+setInterval(delete_note,process.env.time);
 
 
 app.listen(process.env.PORT,()=>console.log('Server Running port:',process.env.PORT));

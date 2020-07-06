@@ -7,12 +7,14 @@ try{
          name:user
      }
 });
-    console.log(res.data);
+    
     if(res.data.status==="Success"){
+      let source = '/user_pic/default.jpg';
+      if(res.data.user.photo)  source =`data:${res.data.user.photo.contentType};base64,${new Buffer.from(res.data.user.photo.data).toString('base64')}`
       const html = `
       <div class="user_box" data-to= ${res.data.user._id} data-note=${note}>
       
-      <h1> <img src="/user_pic/${res.data.user.photo}"> ${res.data.user.name}</h1>
+      <h1> <img src= ${source}> ${res.data.user.name}</h1>
       </div>
       `
       document.querySelector('.search_res').innerHTML='';

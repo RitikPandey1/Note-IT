@@ -17,8 +17,8 @@ const user_schema = new mongoose.Schema({
         required:[true,'Email is required']
     },
     photo:{
-        type:String,
-        default: 'default.jpg'
+        data:Buffer,
+        contentType:String
     },
     password:{
         type:String,
@@ -84,7 +84,7 @@ user_schema.methods.createtoken = function(){
 
     this.reset_token_exp = Date.now() + 10*60*1000;
     
-    console.log(string,this.reset_token);
+    
  
     return string;
 }

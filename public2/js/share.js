@@ -1,7 +1,7 @@
 
 const msg_box = (msg)=>{
     if(!document.querySelector('.msg_box')){
-  console.log('inside');        
+         
 const html =`
 <div class="msg_box mx-auto">
 <span>${msg}</span>
@@ -27,7 +27,7 @@ try{
         method:'GET',
         url:`/api/v1/notes/sharenote/${JSON.parse(note)}/user/${JSON.parse(user)}`
     });
-    console.log(res.data);
+   
   if(res.data.status ==="Success"){
       msg_box('Note sent successfully!');
       remove();

@@ -61,7 +61,7 @@ if(login_form){
                     e.preventDefault();
                     const email = document.querySelector('#email').value;
                     const password = document.querySelector('#password').value;
-                    console.log(email,password);
+                    
                     
                     const login_btn = document.querySelector('#login_btn');
 
@@ -75,14 +75,14 @@ if(login_form){
 
 if(save_btn){
 
-        console.log('hello')
+       
         save_btn.addEventListener('submit',async(e)=>{
                 e.preventDefault();
                 const title = document.querySelector('#input1').value;
                 const text = document.querySelector('#txtarea1').value;
 
                 const save = document.querySelector('#save');
-                console.log(save);
+              
                 add_spinner(save,'Saving');
                 await add_note(title,text);
                 remove_spinner(save,'Save');
@@ -132,10 +132,10 @@ if(upd_btn){
              const title = document.querySelector(`#update_inp-${note}`).value;
              const text = document.querySelector(`#update_txt-${note}`).value;
             
-             console.log(title,text);
+         
              
              const upd_btn = document.querySelector(`#upd_btn-${note}`);
-             console.log(upd_btn);
+           
              add_spinner(upd_btn,'Updating');
              await update_note(title,text,note);
              remove_spinner(upd_btn,'Update')
@@ -151,7 +151,7 @@ if(search_form){
             const btn = document.querySelector('#search_btn');
             const note  = btn.dataset.note;
             const user = document.querySelector('#user').value;
-            console.log(user);
+          
             
             const  user_name =  user.replace(/^\s+|\s+$/gm,'');
             add_spinner(btn,'Searching');
@@ -167,7 +167,7 @@ if(share){
     share.addEventListener('click',async(e)=>{
         const el = e.target.closest('.user_box');
         if(el){
-            console.log('lolo');
+          
             const user =JSON.stringify(el.dataset.to);
             const note =JSON.stringify(el.dataset.note);
             const elem = document.querySelector('.search_res');
@@ -201,7 +201,7 @@ if(receiv_del){
     })
 }
 
-console.log(user_form);
+
 if(user_form){
    
      user_form.addEventListener('submit',async(e)=>{

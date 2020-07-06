@@ -5,21 +5,24 @@ const share_cntrl  = require('../controller/share_cntrl');
 
 const router = new express.Router();
 
-router.get('/',user_cntrl.islog,view_cntrl.main_view);
-
-router.get('/login',user_cntrl.islog,view_cntrl.login);
 
 router.get('/logout',user_cntrl.logout);
 
-router.get('/sharenote/:note/:id',user_cntrl.firewall,view_cntrl.share_note);
+router.use(user_cntrl.islog);
 
-router.post('/get_user',user_cntrl.firewall,user_cntrl.get_user);
+router.get('/',view_cntrl.main_view);
 
-router.get('/sent_notes',user_cntrl.firewall,share_cntrl.delete,view_cntrl.sent_note);
+router.get('/login',view_cntrl.login);
 
-router.get('/receive_notes',user_cntrl.firewall,share_cntrl.delete,view_cntrl.receive_note);
+router.get('/sharenote/:note/:id',view_cntrl.share_note);
 
-router.get('/account',user_cntrl.firewall,view_cntrl.me);
+router.post('/get_user',user_cntrl.get_user);
+
+router.get('/sent_notes',share_cntrl.delete,view_cntrl.sent_note);
+
+router.get('/receive_notes',share_cntrl.delete,view_cntrl.receive_note);
+
+router.get('/account',view_cntrl.me);
 
 
 

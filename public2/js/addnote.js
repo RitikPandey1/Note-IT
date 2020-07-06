@@ -11,7 +11,7 @@ try{
             text
         }
     });
-console.log(res)
+
 if(res.data.status==='Success') location.reload(true);
 
 }catch(err){
@@ -19,6 +19,6 @@ if(res.data.status==='Success') location.reload(true);
     if(err.response){
        console.log(err.response.data);  
     }
-    console.log(err);
+ 
 }
 }

@@ -4,9 +4,11 @@ const Apperr = require('../util/Apperr');
 const jwt = require('jsonwebtoken');
 const Send_mail = require('../util/email');
 const crypto = require('crypto');
-
+const fs = require('fs');
 const multer = require('multer');
 const sharp = require('sharp');
+
+
 
 const multer_storage = multer.memoryStorage();
 const multer_filter = (req,file,cb)=>{
@@ -17,13 +19,14 @@ const multer_filter = (req,file,cb)=>{
   }
 
 }
-
 const upload  = multer({
   storage:multer_storage,
   fileFilter:multer_filter
 });
 
 exports.upload_pic = upload.single('photo');
+
+
 
 exports.resize = async (req,res,next)=>{
 
@@ -40,6 +43,8 @@ exports.resize = async (req,res,next)=>{
 
 }
 
+
+
 const create_jwt = (id)=> jwt.sign({id},process.env.jwt_PK,{ expiresIn: process.env.jwt_exp});
 
 const send_token = (res,token,message)=>{
@@ -47,7 +52,7 @@ const send_token = (res,token,message)=>{
    expires : new Date(Date.now()+process.env.cookie_exp *24*60*60*1000),
    httpOnly:true
   }
-//if(process.env.NODE_ENV ==='production') cookie_option.secure = true;
+  if(process.env.NODE_ENV ==='production') cookie_option.secure = true;
 
 res.cookie('jwt',token,cookie_option);
 
@@ -122,6 +127,8 @@ next();
 }); 
 
 
+// --- forgot password & reset password option is only available in api ----
+
 exports.forgot_password = catch_err(async(req,res,next)=>{
 
   if(!req.body.email) return next(new Apperr('Please provide email',400));
@@ -170,12 +177,15 @@ exports.reset_password = catch_err(async(req,res,next)=>{
 
 });
 
+//---------------------------------------------------------------------------------
+
+
 exports.logout = (req,res,next)=>{
   
  res.cookie('jwt',"logout",{
   expires : new Date(Date.now()+10*1000),
-  httpOnly:true
-  //secure: process.env.NODE_ENV ==='production'? true:false
+  httpOnly:true,
+  secure: process.env.NODE_ENV ==='production'? true:false
  });
 
  res.redirect('/');
@@ -185,7 +195,7 @@ exports.logout = (req,res,next)=>{
 
 exports.islog = async(req,res,next)=>{
 
-  console.log('in');
+ 
   if(req.cookies.jwt){
     try{   
 
@@ -204,6 +214,7 @@ exports.islog = async(req,res,next)=>{
   if(user.checkPasswordChange(decode.iat)) return next();
 
   res.locals.user = user;
+  req.user = user;
   
   return next();
 }catch(err){
@@ -234,9 +245,13 @@ exports.update_me = catch_err(async(req,res,next)=>{
 const upd_obj = {
    name:req.body.name,
   email:req.body.email,
-  
+  photo: { }
 };
-if(req.file) upd_obj.photo = req.file.filename;
+
+ if(req.file){ 
+   upd_obj.photo.data =  fs.readFileSync(`./public2/user_pic/${req.file.filename}`);
+  upd_obj.photo.contentType = req.file.mimetype; 
+   }
 
 await User.findByIdAndUpdate(req.user._id,upd_obj,{
   new:true,

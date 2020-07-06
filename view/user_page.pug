@@ -1,7 +1,7 @@
 .container-fluid(style="padding: 0;")
     .account
         a(href="/account" style="color: #5E5E5E;")
-            img(src=`/user_pic/${user.photo}`)
+            img(src= source)
             div #{user.name.split(" ")[0]}
 .container-fluid(style="text-align: center;")
     button.btn.btn1(data-toggle="modal" data-target="#myModal")

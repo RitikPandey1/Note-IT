@@ -5,11 +5,20 @@ const Share =require('../model/share_model');
 
 exports.main_view =catch_err( async(req,res,next)=>{
   let notes;
-  
-   if(res.locals.user)  notes = await Note.find({owner_id:res.locals.user._id});
-  console.log(res.locals.user);
+  const user = res.locals.user;
+  let source='/user_pic/default.jpg';
+ 
+  if(user) { 
+   notes = await Note.find({owner_id:res.locals.user._id});
+   
+   if(user.photo.data){ 
+       source = `data:${res.locals.user.photo.contentType};base64,${new Buffer.from(res.locals.user.photo.data).toString('base64')}`;
+     }
+    }
+   
    res.status(200).render('base',{
-           notes
+           notes,
+           source
          }); 
   
     
@@ -29,6 +38,8 @@ exports.login= (req,res,next)=>{
 
 exports.share_note = (req,res,next)=>{
 
+  if(!res.locals.user) return res.status(200).redirect('/');
+  
   const name =  req.params.note;
   const note_id = req.params.id;
   res.status(200).render('search',{
@@ -39,7 +50,9 @@ exports.share_note = (req,res,next)=>{
 }
 
 exports.sent_note = catch_err(async(req,res,next)=>{
-  const sent_note = await Share.find({from:req.user.id }).populate({
+  if(!res.locals.user) return res.status(200).redirect('/');
+ 
+  const sent_note = await Share.find({from:res.locals.user._id}).populate({
     path:'note',
     select:'title text'
 }).populate({
@@ -52,8 +65,9 @@ exports.sent_note = catch_err(async(req,res,next)=>{
 });
 
 exports.receive_note = catch_err(async(req,res,next)=>{
-console.log('kl')
-  const received_note = await Share.find({to:req.user.id}).populate({
+  if(!res.locals.user) return res.status(200).redirect('/');
+  
+  const received_note = await Share.find({to:res.locals.user._id}).populate({
     path:'note',
     select:'title text'
 }).populate({
@@ -61,7 +75,7 @@ console.log('kl')
     select:'name'
 });
 
-console.log(received_note);
+
 
 
 res.status(200).render('receive',{
@@ -73,6 +87,16 @@ res.status(200).render('receive',{
 });
 
 exports.me = (req,res,next)=>{
+  const user = res.locals.user;
 
-  res.status(200).render('account')
+  if(!user) return res.status(200).redirect('/');
+ 
+  let source='/user_pic/default.jpg';
+  if(user.photo.data){ 
+       source = `data:${res.locals.user.photo.contentType};base64,${new Buffer.from(res.locals.user.photo.data).toString('base64')}`;
+    }
+  
+  res.status(200).render('account',{
+    source
+  });
 }
