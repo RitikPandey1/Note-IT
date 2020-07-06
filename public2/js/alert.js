@@ -1,7 +1,7 @@
 export const show_alert = (msg,form)=>{
     if(!document.querySelector('.alert-custom')){
 const html=  `<div class="alert-custom">
-<span > <p style="font-size:15px;" >${msg}</p></span>
+<span > ${msg}</span>
 </div>`
 document.querySelector(`#form-${form}`).insertAdjacentHTML('afterbegin',html);
     }

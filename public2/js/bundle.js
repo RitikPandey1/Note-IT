@@ -6587,7 +6587,7 @@ exports.remove_alert = exports.show_alert = void 0;
 
 var show_alert = function show_alert(msg, form) {
   if (!document.querySelector('.alert-custom')) {
-    var html = "<div class=\"alert-custom\">\n<span > <p style=\"font-size:15px;\" >".concat(msg, "</p></span>\n</div>");
+    var html = "<div class=\"alert-custom\">\n<span > ".concat(msg, "</span>\n</div>");
     document.querySelector("#form-".concat(form)).insertAdjacentHTML('afterbegin', html);
   }
 };
@@ -6636,33 +6636,31 @@ var login = /*#__PURE__*/function () {
 
           case 3:
             res = _context.sent;
-            console.log(res);
 
             if (res.data.status === "Success") {
               location.replace('/');
             }
 
-            _context.next = 12;
+            _context.next = 11;
             break;
 
-          case 8:
-            _context.prev = 8;
+          case 7:
+            _context.prev = 7;
             _context.t0 = _context["catch"](0);
 
             if (_context.t0.response.data) {
-              console.log(_context.t0.response.data);
               (0, _alert.show_alert)(_context.t0.response.data.error, 'login');
               (0, _alert.remove_alert)();
             }
 
             console.log(_context.t0);
 
-          case 12:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee, null, [[0, 7]]);
   }));
 
   return function login(_x, _x2) {
@@ -6703,13 +6701,12 @@ var add_note = /*#__PURE__*/function () {
 
           case 3:
             res = _context.sent;
-            console.log(res);
             if (res.data.status === 'Success') location.reload(true);
-            _context.next = 13;
+            _context.next = 11;
             break;
 
-          case 8:
-            _context.prev = 8;
+          case 7:
+            _context.prev = 7;
             _context.t0 = _context["catch"](0);
             alert(_context.t0);
 
@@ -6717,14 +6714,12 @@ var add_note = /*#__PURE__*/function () {
               console.log(_context.t0.response.data);
             }
 
-            console.log(_context.t0);
-
-          case 13:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee, null, [[0, 7]]);
   }));
 
   return function add_note(_x, _x2) {
@@ -6755,8 +6750,7 @@ var sign_in = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            console.log(name, email, password, confirmPassword);
-            _context.next = 4;
+            _context.next = 3;
             return axios({
               method: 'POST',
               url: 'api/v1/user/signup',
@@ -6768,19 +6762,18 @@ var sign_in = /*#__PURE__*/function () {
               }
             });
 
-          case 4:
+          case 3:
             res = _context.sent;
-            console.log(res.data);
 
             if (res.data.status === "Success") {
               location.assign('/');
             }
 
-            _context.next = 14;
+            _context.next = 11;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 7:
+            _context.prev = 7;
             _context.t0 = _context["catch"](0);
 
             if (_context.t0.response) {
@@ -6788,15 +6781,14 @@ var sign_in = /*#__PURE__*/function () {
               (0, _alert.remove_alert)();
             }
 
-            console.log(_context.t0.response.data);
             console.log(_context.t0);
 
-          case 14:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 7]]);
   }));
 
   return function sign_in(_x, _x2, _x3, _x4) {
@@ -6833,26 +6825,25 @@ var delete_note = /*#__PURE__*/function () {
 
           case 3:
             res = _context.sent;
-            console.log(res);
 
             if (res.data.status === "Success") {
               location.reload(true);
             }
 
-            _context.next = 11;
+            _context.next = 10;
             break;
 
-          case 8:
-            _context.prev = 8;
+          case 7:
+            _context.prev = 7;
             _context.t0 = _context["catch"](0);
             console.log(_context.t0.response.data);
 
-          case 11:
+          case 10:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee, null, [[0, 7]]);
   }));
 
   return function delete_note(_x) {
@@ -6893,22 +6884,21 @@ var update_note = /*#__PURE__*/function () {
 
           case 3:
             res = _context.sent;
-            console.log(res.data);
             if (res.data.status === "Success") location.reload(true);
-            _context.next = 11;
+            _context.next = 10;
             break;
 
-          case 8:
-            _context.prev = 8;
+          case 7:
+            _context.prev = 7;
             _context.t0 = _context["catch"](0);
             if (_context.t0.response) console.log(_context.t0.response.data);
 
-          case 11:
+          case 10:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee, null, [[0, 7]]);
   }));
 
   return function update_note(_x, _x2, _x3) {
@@ -8990,7 +8980,6 @@ var get_user = /*#__PURE__*/function () {
 
           case 3:
             res = _context.sent;
-            console.log(res.data);
 
             if (res.data.status === "Success") {
               source = '/user_pic/default.jpg';
@@ -9000,11 +8989,11 @@ var get_user = /*#__PURE__*/function () {
               document.querySelector('.search_res').insertAdjacentHTML('afterbegin', html);
             }
 
-            _context.next = 12;
+            _context.next = 11;
             break;
 
-          case 8:
-            _context.prev = 8;
+          case 7:
+            _context.prev = 7;
             _context.t0 = _context["catch"](0);
 
             if (_context.t0.response) {
@@ -9017,12 +9006,12 @@ var get_user = /*#__PURE__*/function () {
 
             console.log(_context.t0);
 
-          case 12:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee, null, [[0, 7]]);
   }));
 
   return function get_user(_x, _x2) {
@@ -9045,7 +9034,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var msg_box = function msg_box(msg) {
   if (!document.querySelector('.msg_box')) {
-    console.log('inside');
     var html = "\n<div class=\"msg_box mx-auto\">\n<span>".concat(msg, "</span>\n</div>\n");
     document.querySelector('#search_form').insertAdjacentHTML('afterbegin', html);
   }
@@ -9074,18 +9062,17 @@ var share_note = /*#__PURE__*/function () {
 
           case 3:
             res = _context.sent;
-            console.log(res.data);
 
             if (res.data.status === "Success") {
               msg_box('Note sent successfully!');
               remove();
             }
 
-            _context.next = 11;
+            _context.next = 10;
             break;
 
-          case 8:
-            _context.prev = 8;
+          case 7:
+            _context.prev = 7;
             _context.t0 = _context["catch"](0);
 
             if (_context.t0.response) {
@@ -9097,12 +9084,12 @@ var share_note = /*#__PURE__*/function () {
               console.log(_context.t0.response.data);
             }
 
-          case 11:
+          case 10:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee, null, [[0, 7]]);
   }));
 
   return function share_note(_x, _x2) {
@@ -9232,19 +9219,16 @@ var update_me = /*#__PURE__*/function () {
 
           case 4:
             res = _context.sent;
-            console.log(res);
             document.querySelector('#pass_cur').innerHTML = ' ';
             if (res.data.status == 'Success') location.reload(true);
-            _context.next = 14;
+            _context.next = 13;
             break;
 
-          case 10:
-            _context.prev = 10;
+          case 9:
+            _context.prev = 9;
             _context.t0 = _context["catch"](0);
 
             if (_context.t0.response) {
-              console.log(_context.t0.response.data);
-
               if (_context.t0.response.data.error === 'Current password is not correct') {
                 document.querySelector('#pass_cur').innerHTML = "".concat(_context.t0.response.data.error);
               }
@@ -9252,12 +9236,12 @@ var update_me = /*#__PURE__*/function () {
 
             console.log(_context.t0);
 
-          case 14:
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 10]]);
+    }, _callee, null, [[0, 9]]);
   }));
 
   return function update_me(_x, _x2) {
@@ -9595,16 +9579,15 @@ if (login_form) {
               e.preventDefault();
               email = document.querySelector('#email').value;
               password = document.querySelector('#password').value;
-              console.log(email, password);
               login_btn = document.querySelector('#login_btn');
               add_spinner(login_btn, 'Loading');
-              _context.next = 8;
+              _context.next = 7;
               return (0, _login.login)(email, password);
 
-            case 8:
+            case 7:
               remove_spinner(login_btn, 'Log in');
 
-            case 9:
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -9619,7 +9602,6 @@ if (login_form) {
 }
 
 if (save_btn) {
-  console.log('hello');
   save_btn.addEventListener('submit', /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(e) {
       var title, text, save;
@@ -9631,15 +9613,14 @@ if (save_btn) {
               title = document.querySelector('#input1').value;
               text = document.querySelector('#txtarea1').value;
               save = document.querySelector('#save');
-              console.log(save);
               add_spinner(save, 'Saving');
-              _context2.next = 8;
+              _context2.next = 7;
               return (0, _addnote.add_note)(title, text);
 
-            case 8:
+            case 7:
               remove_spinner(save, 'Save');
 
-            case 9:
+            case 8:
             case "end":
               return _context2.stop();
           }
@@ -9733,17 +9714,15 @@ if (upd_btn) {
                 note = el.dataset.note;
                 title = document.querySelector("#update_inp-".concat(note)).value;
                 text = document.querySelector("#update_txt-".concat(note)).value;
-                console.log(title, text);
                 upd_btn = document.querySelector("#upd_btn-".concat(note));
-                console.log(upd_btn);
                 add_spinner(upd_btn, 'Updating');
-                _context5.next = 10;
+                _context5.next = 8;
                 return (0, _update.update_note)(title, text, note);
 
-              case 10:
+              case 8:
                 remove_spinner(upd_btn, 'Update');
 
-              case 11:
+              case 9:
               case "end":
                 return _context5.stop();
             }
@@ -9770,16 +9749,15 @@ if (search_form) {
               btn = document.querySelector('#search_btn');
               note = btn.dataset.note;
               user = document.querySelector('#user').value;
-              console.log(user);
               user_name = user.replace(/^\s+|\s+$/gm, '');
               add_spinner(btn, 'Searching');
-              _context6.next = 9;
+              _context6.next = 8;
               return (0, _get_user.get_user)(user_name, note);
 
-            case 9:
+            case 8:
               remove_spinner(btn, 'Search');
 
-            case 10:
+            case 9:
             case "end":
               return _context6.stop();
           }
@@ -9804,22 +9782,21 @@ if (share) {
               el = e.target.closest('.user_box');
 
               if (!el) {
-                _context7.next = 10;
+                _context7.next = 9;
                 break;
               }
 
-              console.log('lolo');
               user = JSON.stringify(el.dataset.to);
               note = JSON.stringify(el.dataset.note);
               elem = document.querySelector('.search_res');
               add_spinner(elem, 'Sending');
-              _context7.next = 9;
+              _context7.next = 8;
               return (0, _share.share_note)(user, note);
 
-            case 9:
+            case 8:
               remove_spinner(elem, ' ');
 
-            case 10:
+            case 9:
             case "end":
               return _context7.stop();
           }
@@ -9850,8 +9827,6 @@ if (receiv_del) {
     });
   });
 }
-
-console.log(user_form);
 
 if (user_form) {
   user_form.addEventListener('submit', /*#__PURE__*/function () {
@@ -9966,7 +9941,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63044" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65156" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
