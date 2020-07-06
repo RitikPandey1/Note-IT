@@ -249,7 +249,10 @@ const upd_obj = {
 };
 
  if(req.file){ 
-   upd_obj.photo.data =  fs.readFileSync(`./public2/user_pic/${req.file.filename}`);
+    fs.readFile(`./public2/user_pic/${req.file.filename}`,(err,data)=>{
+      if(err) return next(err);  
+      upd_obj.photo.data = data; 
+   });
   upd_obj.photo.contentType = req.file.mimetype; 
    }
 
