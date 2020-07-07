@@ -1,6 +1,6 @@
 const express = require('express');
 const  cookie_parser= require('cookie-parser');
-
+const helmet  = require('helmet');
 const note_router = require('./routes/note_route');
 const user_router = require('./routes/user_route');
 const view_routes = require('./routes/view_routes');
@@ -10,6 +10,7 @@ const error = require('./controller/error');
 
 const app = express();
 
+app.use(helmet());
 
 app.set('view engine','pug');
 app.set('views','./view');
