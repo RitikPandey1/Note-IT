@@ -4,6 +4,7 @@ const Apperr = require('../util/Apperr');
 const jwt = require('jsonwebtoken');
 const Send_mail = require('../util/email');
 const crypto = require('crypto');
+const util = require('util');
 const fs = require('fs');
 const multer = require('multer');
 const sharp = require('sharp');
@@ -60,7 +61,7 @@ res.status(200).json({
   status:"Success",
   message
 })
-}
+}  
 
 exports.sign_up = catch_err(async(req,res,next)=>{
 
@@ -249,7 +250,7 @@ const upd_obj = {
 };
 
  if(req.file){ 
-  upd_obj.photo.data =  fs.readFileSync(`./public2/user_pic/${req.file.filename}`);
+  upd_obj.photo.data = await  util.promisify(fs.readFile)(`./public2/user_pic/${req.file.filename}`);
   upd_obj.photo.contentType = req.file.mimetype; 
    }
 

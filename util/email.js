@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
 
+// email feature is only for development, note working in production 
+
 module.exports = (template,subject,message,to)=>{
 
     

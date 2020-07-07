@@ -16,6 +16,7 @@ mongoose.connect(process.env.DB,{
 .then(()=> console.log('DataBase connected!') )
 .catch(err=>console.log(err));
 
+
 setInterval(delete_note,process.env.time);
 
 

@@ -28,6 +28,7 @@ exports.update_note = catch_err(async(req,res,next)=>{
     response(res,'Note  updated!');
 });
 
+
 exports.delete_note = catch_err(async(req,res,next)=>{
     const note =  await Note.findById(req.params.id);
     note.owner_id = undefined;
