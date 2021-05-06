@@ -246,9 +246,9 @@ exports.update_me = catch_err(async(req,res,next)=>{
 const upd_obj = {
    name:req.body.name,
   email:req.body.email,
-  photo: { }
-};
-
+  photo: {  }
+  };
+  
  if(req.file){ 
   upd_obj.photo.data = await  util.promisify(fs.readFile)(`./public2/user_pic/${req.file.filename}`);
   upd_obj.photo.contentType = req.file.mimetype; 

@@ -84,8 +84,6 @@ user_schema.methods.createtoken = function(){
 
     this.reset_token_exp = Date.now() + 10*60*1000;
     
-    
- 
     return string;
 }
 
