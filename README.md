@@ -4,6 +4,6 @@ User can create,read,update,delete their notes and also share notes with other u
 
 -JWT(Javascript Web Token) Authentication is used for user login & signup
 
-Implemented by using Node.js, Express.js, MongoDB, HTML, CSS, Bootstrap4, Javascript.
+**Tech Stack : Node.js, Express.js, MongoDB, HTML, CSS, Bootstrap4, Javascript**
 
 Link :- https://note-it-11.herokuapp.com/
