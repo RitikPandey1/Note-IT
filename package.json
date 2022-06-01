@@ -26,7 +26,7 @@
 		"nodemon": "^2.0.4",
 		"parcel-bundler": "^1.12.4",
 		"pug": "^3.0.0",
-		"sharp": "^0.25.4",
+		"sharp": "^0.30.5",
 		"validator": "^13.1.1"
 	},
 	"proxy": "http://127.0.0.1:6000"
