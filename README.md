@@ -6,8 +6,7 @@ User can create,read,update,delete their notes and also share notes with other u
 
 **Tech Stack : Node.js, Express.js, MongoDB, HTML, CSS, Bootstrap4, Javascript**
 
-**Live Demo :** https://note-it-11.herokuapp.com/
-
+**Live Demo :** https://note-it-o06t.onrender.com
 ![](https://github.com/RitikPandey1/Note-IT/blob/master/pics/noteit.gif)
 
 ![](https://github.com/RitikPandey1/Note-IT/blob/master/pics/note2.PNG)
